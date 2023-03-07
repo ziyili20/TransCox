@@ -1,7 +1,7 @@
 Package: TransCox
 Type: Package
 Title: Improved Cox Proportional Hazards Model with Transfer Learning
-Version: 0.1.0
+Version: 0.1.1
 Author: Ziyi Li <zli16@mdanderson.org>
 Maintainer: Ziyi Li <zli16@mdanderson.org>
 Description: When there are survival data from external source, we usually want to use the external data to improve the survival analysis of a target dataset using Cox Proportional Hazards model. This package implements our Trans-Cox method that adaptively borrow information from external data sources to perform the analysis of the target data. 
