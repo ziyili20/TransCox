@@ -1,4 +1,4 @@
-![GitHub Release Downloads](https://img.shields.io/github/downloads/ziyili20/TransCox/total/asset_name.zip)
+![GitHub Release Downloads](https://img.shields.io/github/downloads/ziyili20/TransCox/TransCox-master.zip)
 
 # TransCox
 How to improve the survival inference for one dataset if you have a larger cohort to borrow information from? Here, we provide transfer learning-based Cox Proportional Hazards model (**TransCox**). Our method considers two data sources, a target dataset and a source dataset. The idea is to borrow information adaptively from the source dataset to improve the inference for the target data. The tuning parameter to control the information borrowing between the two data sets is selected through a grid search with BIC.  
