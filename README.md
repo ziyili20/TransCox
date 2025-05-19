@@ -1,3 +1,5 @@
+![GitHub all releases](https://img.shields.io/github/downloads/ziyili20/TransCox/total)
+
 # TransCox
 How to improve the survival inference for one dataset if you have a larger cohort to borrow information from? Here, we provide transfer learning-based Cox Proportional Hazards model (**TransCox**). Our method considers two data sources, a target dataset and a source dataset. The idea is to borrow information adaptively from the source dataset to improve the inference for the target data. The tuning parameter to control the information borrowing between the two data sets is selected through a grid search with BIC.  
 
@@ -87,7 +89,20 @@ LRres <- SelLR_By_BIC(primData = onedata$primData,
 My LRres look like this
 
 ```
-LRres$best_lr[1] 0.004$best_nsteps[1] 200$BICmat           100      2000.001 2503.008 2491.9300.002 2492.187 2485.1080.003 2489.549 2483.7120.004 2484.411 2483.4460.005 2490.987 2483.649
+LRres
+$best_lr
+[1] 0.004
+
+$best_nsteps
+[1] 200
+
+$BICmat
+           100      200
+0.001 2503.008 2491.930
+0.002 2492.187 2485.108
+0.003 2489.549 2483.712
+0.004 2484.411 2483.446
+0.005 2490.987 2483.649
 ```
 
 Here we select the best tuning parameter using BIC. This step may take 2-3 minutes. If it takes too long, you can reduce the potential values in `lambda1_vec` and `lambda2_vec` to decrease the searching time. 
@@ -112,7 +127,21 @@ Tres <- runTransCox_one(Pout, l1 = BICres$best_la1, l2 = BICres$best_la2,
 Take a look at the output from the function:
 
 ```
-> lapply(Tres, head, 2)$eta[1]  0.07593853 -0.15498716$xi[1]  0.00162907 -0.01151908$new_beta[1] -0.6571349  0.3119838$new_IntH[1] 0.005916450 0.005984873$time[1] 0.06477683 0.10978123
+> lapply(Tres, head, 2)
+$eta
+[1]  0.07593853 -0.15498716
+
+$xi
+[1]  0.00162907 -0.01151908
+
+$new_beta
+[1] -0.6571349  0.3119838
+
+$new_IntH
+[1] 0.005916450 0.005984873
+
+$time
+[1] 0.06477683 0.10978123
 ```
 `new_beta` is the estimated beta parameter from the Cox PH model with transfer learning from the source dataset. 
 
